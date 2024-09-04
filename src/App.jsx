@@ -1,22 +1,45 @@
 import './App.css'
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() { 
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = async data => {
-    
-    console.log(data)
-    fetch("http://localhost:3000/send", 
-      {
+  const onSubmit = async (data) => {
+      console.log(data);
+   
+      const response = await fetch("http://localhost:3000/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+      });
+   
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    ).then((res) => res.text())
-    .then((res) => console.log("the response is "+res))
-  }
+   
+      const jsondata = await response.json();
+      console.log(jsondata);
+   
+      toast.info(
+        <div className="custom-toast flex items-center">
+          <span>{jsondata.message}</span>
+          <button className="toast-close-button p-[5px]" onClick={() => toast.dismiss()}>✖</button>
+        </div>,
+        {
+          position: "bottom-left",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeButton: false,
+          style: { backgroundColor: 'rgba(0, 0, 0, 0.8)', color: '#fff' }
+        }
+      );
+    
+  };
+  
 
 
   return (
@@ -30,6 +53,7 @@ function App() {
         <br />
         <input type="submit" className='bg-blue-500 rounded cursor-pointer' value={"Send"}/>
       </form>
+      <ToastContainer/>
     </>
   )
 }

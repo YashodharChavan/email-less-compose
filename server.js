@@ -17,13 +17,13 @@ app.post("/send", (req, res) => {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "yashodhar.vgency@gmail.com",
-            pass: "nohewkqvblqfxdlc"
+            user: "example@gmail.com", // enter your email here
+            pass: "your-app-key"    // enter your app password here, you can get it from your google account
         }
     })
 
     const mailOptions = {
-        from: 'yashodhar.vgency@gmail.com', 
+        from: 'example@gmail.com', // your email goes here 
         to,
         subject,
         text
@@ -32,17 +32,16 @@ app.post("/send", (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             res.json({
-                message: "Error sending email"
+                message: "Error in sending email"
             })
         } else {
             res.json({
                 message: "Email sent successfully"
             })
-
         }
     });
 })
 
 app.listen(3000, () => {
-    console.log("Server started on port 3000")
+    console.log("Server started on http://localhost:3000")
 })
