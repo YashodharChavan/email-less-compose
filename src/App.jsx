@@ -25,9 +25,9 @@ function App() {
       console.log(jsondata);
    
       toast.info(
-        <div className="custom-toast flex items-center">
+        <div className="custom-toast flex items-center bg-[#444] text-[#fff] p-[10px] rounded relative">
           <span>{jsondata.message}</span>
-          <button className="toast-close-button p-[5px]" onClick={() => toast.dismiss()}>✖</button>
+          <button className="toast-close-button p-[5px] absolute top-[5px] right-[10px] border-none text-[#fff] cursor-pointer text-[20px]" onClick={() => toast.dismiss()}>✖</button>
         </div>,
         {
           position: "bottom-left",

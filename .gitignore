@@ -9,19 +9,12 @@ lerna-debug.log*
 
 node_modules
 dist
-dist-ssr
-*.local
+dist-ssr 
 public
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
 eslint.config.js
 package-lock.json
 package.json
