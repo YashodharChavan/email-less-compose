@@ -5,7 +5,7 @@ This application allows you to send emails without opening an email client. It i
 <img src="./src/assets/email.PNG" height="250">
 <br>
 <br>
-<img src="./src/assets/recieved.PNG" width="500">
+<img src="./src/assets/recieved.PNG" width="600">
 <br>
 ## Features
 
